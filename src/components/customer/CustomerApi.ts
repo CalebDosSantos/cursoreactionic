@@ -27,8 +27,13 @@ export function searchCustomers() {
     // ];
 }
 
-export function removeCustomer() {
+export function removeCustomer(id:string) {
+  let customers = searchCustomers();
 
+  let indice = customers.findIndex((customer:any) => customer.id == id);
+  customers.splice(indice, 1);
+
+  localStorage['customers'] = JSON.stringify(customers);
 }
 
 export function saveCustomer(customer:any) {

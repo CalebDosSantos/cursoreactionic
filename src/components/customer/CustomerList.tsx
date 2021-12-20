@@ -4,7 +4,7 @@ import {useEffect, useState} from 'react';
 // import {beer} from 'ionicons/icons';
 import { useParams } from 'react-router';
 import '../../pages/Page.css';
-import {saveCustomer, searchCustomers} from './CustomerApi';
+import {saveCustomer, searchCustomers, removeCustomer} from './CustomerApi';
 
 const CustomerList: React.FC = () => {
 
@@ -18,6 +18,11 @@ const CustomerList: React.FC = () => {
   const search = () => {
     let result = searchCustomers()
     setClientes(result);
+  }
+
+  const remove = (id:string) => {
+    removeCustomer(id);
+    search();
   }
 
   const pruebaLocalStorage = () => {
@@ -84,7 +89,8 @@ const CustomerList: React.FC = () => {
                               <IonIcon icon={pencil} slot="icon-only"/>
                             </IonButton>
 
-                            <IonButton color="danger" fill="clear">
+                            <IonButton color="danger" fill="clear"
+                              onClick={() => remove(cliente.id)}>
                               <IonIcon icon={close} slot="icon-only"/>
                             </IonButton>
 
