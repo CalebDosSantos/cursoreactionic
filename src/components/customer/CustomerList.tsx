@@ -18,6 +18,7 @@ const CustomerList: React.FC = () => {
 
   const search = () => {
     let result = searchCustomers()
+    debugger;
     setClientes(result);
   }
 
@@ -81,7 +82,6 @@ const CustomerList: React.FC = () => {
             <IonCol>Endereço</IonCol>
             <IonCol>Ações</IonCol>
           </IonRow>
-
           {clientes.map((cliente:any) =>
                         <IonRow>
                           <IonCol>{cliente.firstname} {cliente.lastname}</IonCol>

@@ -2,14 +2,16 @@ import { IonButton, IonButtons, IonCard, IonCol, IonContent, IonGrid, IonHeader,
 import {add, checkmark, close, pencil} from 'ionicons/icons';
 import {useEffect, useState} from 'react';
 // import {beer} from 'ionicons/icons';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import '../../pages/Page.css';
 import {saveCustomer, searchCustomers, removeCustomer} from './CustomerApi';
 
 const CustomerEdit: React.FC = () => {
   const { name, id } = useParams<{ name: string; id: string; }>();
 
-  const [customer, setCustomer] = useState<any>([]);
+  const [customer, setCustomer] = useState<any>({});
+
+  const history = useHistory();  
 
   useEffect(() => {
       search();
@@ -22,7 +24,9 @@ const CustomerEdit: React.FC = () => {
 
   const save = () => {
     customer.id = Math.round(Math.random() * 100000);
+    // debugger;
     saveCustomer(customer);
+    history.push('/page/customer');
   }
 
 

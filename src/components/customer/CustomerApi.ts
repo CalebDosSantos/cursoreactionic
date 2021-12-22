@@ -40,5 +40,5 @@ export function saveCustomer(customer:any) {
   let customers = searchCustomers();
   customers.push(customer);
   localStorage['customers'] = JSON.stringify(customers);
-
+  // localStorage['customers'] = JSON.stringify(customer);
 }
